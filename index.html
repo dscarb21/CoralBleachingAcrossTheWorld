@@ -9,16 +9,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
 </head>
 <body>
-    <div class="slider-container">
-        <div class="slider-label">Observation Year</div>
-        <input type="range" min="2003" max="2025" value="2025" class="slider" id="mySlider">
-        <div class="slider-value" id="sliderValueText">All</div>
+    <div class="filter-box">
+        <div class="slider-container">
+            <div class="filter-label">Observation Year</div>
+            <input type="range" min="2003" max="2025" value="2025" class="slider" id="mySlider">
+            <div class="slider-value" id="sliderValueText">All</div>
+        </div>
+        <div class="radio-container">
+            <div class="filter-label">Coral Type</div>
+            <label>
+              <input type="radio" name="filter" value="*" checked="checked" /> All
+            </label>
+            <label>
+              <input type="radio" name="filter" value="Boulder corals" /> Boulder corals
+            </label>
+            <label>
+              <input type="radio" name="filter" value="Branching corals" /> Branching corals
+            </label>
+            <label>
+              <input type="radio" name="filter" value="Plate corals" /> Plate corals
+            </label>
+            <label>
+              <input type="radio" name="filter" value="Soft corals" /> Soft corals
+            </label>
+        </div>
     </div>
     <div id="map"></div>
     <div id="img-container">
         <img src="colorMatrix.png" alt="Your Image">
     </div>
-    <script type="module" src="slider.js"></script>    
+    <script type="module" src="slider.js"></script>  
+    <script type="module" src="filter.js"></script>  
     <script type="module" src="map.js"></script>
 </body>
 </html>

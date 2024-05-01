@@ -43,9 +43,9 @@ function addLayers() {
             paint: {
                 "circle-color": ['get', 'color'],
                 "circle-stroke-color": "white",
-                "circle-blur": ["interpolate", ["linear"], ["zoom"], 1, 1, 3, 0],
-                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 4, 0, 7, 1],
-                "circle-opacity": ["interpolate", ["linear"], ["zoom"], 1.5, 0.2, 3, 1],
+                "circle-blur": ["interpolate", ["linear"], ["zoom"], 1, 1, 7, 0],
+                "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 6, 0, 9, 1],
+                "circle-opacity": ["interpolate", ["linear"], ["zoom"], 1.5, 0.2, 7, 1],
                 "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 13, 15, 3],
             }
         },
@@ -59,6 +59,15 @@ export function updateMapData(value) {
         map.setFilter('coral-point', ["==", ['to-number', ['get','year']], value]);
     } else {
         map.setFilter("coral-point", true)
+    }
+}
+
+export function filterCoral(value) {
+    console.log("Coral type: " + value);
+    if (value == "*") {
+        map.setFilter("coral-point", true)
+    } else {
+        map.setFilter('coral-point', ["==", ['get','type'], value]);
     }
 }
 
@@ -117,7 +126,6 @@ function clickHoverListener(map) {
     });
 }
 
-// Use Papa.parse to parse csv into readable array. Seems efficient enough, maybe another library is better?
 function parseCsv(csvFile) {
     return new Promise((resolve, reject) => {
         Papa.parse(csvFile, {

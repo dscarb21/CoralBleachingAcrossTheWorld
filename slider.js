@@ -2,6 +2,7 @@ import { updateMapData } from './map.js';
 var slider = document.getElementById("mySlider");
 var sliderValueText = document.getElementById("sliderValueText");
 var timeout;
+console.log(slider);
 
 slider.addEventListener("input", function() {
     clearTimeout(timeout);
