@@ -1,0 +1,58 @@
+body { 
+    margin: 0; 
+    padding: 0; 
+}
+
+#map { 
+    position: absolute; 
+    top: 0; 
+    bottom: 0; 
+    width: 100%; 
+}
+
+#img-container { 
+    position: fixed; 
+    top: 50px; 
+    right: -225px; 
+    z-index: 9999; 
+}
+
+#img-container img { 
+    width: 50%; 
+    height: auto; 
+}
+
+.slider { 
+    width: 200px; 
+    z-index: 9999;
+}
+
+.slider-container { 
+    position: fixed; 
+    bottom: 20px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    z-index: 9999; 
+}
+
+.slider-label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 500px;
+    text-align: center;
+    color: green;
+    font-weight: bold;
+}
+
+.slider-value {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: green;
+    font-weight: bold;
+}
+
+

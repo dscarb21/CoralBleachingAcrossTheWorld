@@ -1,6 +1,6 @@
 # USAGE
 Install Node JS: https://nodejs.org/en/download \
-Install express: "npm install express" \
+Install express: "npm install express"
 
 Open directory in terminal \
 Type "node app.js" \

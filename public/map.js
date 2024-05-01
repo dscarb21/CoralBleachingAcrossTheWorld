@@ -1,8 +1,12 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHNjYXJiMjEiLCJhIjoiY2x0cnR3cWlqMGtmZzJucDU2eDR2eWpyMCJ9.nfk8bnbhwkUmEHDhKZv3zA';
 
+var year = 2016;
+var map;
+var cleanData;
+
 // Set default features, add points layer
 async function initializeMap(cleanData) {
-    const map = new mapboxgl.Map({
+    map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/nathan-svenska/clvk16y3e01e901queacmfk9y',
         scrollZoom: true,
@@ -18,7 +22,7 @@ async function initializeMap(cleanData) {
 }
 
 // Function to add observations layer to the map
-function addLayers(map, cleanData) {
+function addLayers() {
     map.addSource("observations", {
         type: "geojson",
         data: {
@@ -42,6 +46,12 @@ function addLayers(map, cleanData) {
         },
         "waterway-label"
     );
+}
+
+function updateMapData(value) {
+    console.log("Year: " + value);
+    map.setFilter('coral-point', ["==", ['to-number', ['get','year']], value]);
+    year = value;
 }
 
 // CSV row to GeoJSON
@@ -118,7 +128,7 @@ function parseCsv(csvFile) {
 
 async function main() {
     try {
-        const cleanData = await parseCsv("clean_data.csv");
+        cleanData = await parseCsv("clean_data.csv");
         initializeMap(cleanData);
     } catch (error) {
         console.error("Error parsing CSV:", error);

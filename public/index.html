@@ -4,20 +4,36 @@
     <meta charset="utf-8">
     <title>Coral Bleaching Across The World</title>
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.2.0/mapbox-gl.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
-    <style>
-        body { margin: 0; padding: 0; }
-        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
-        #img-container { position: fixed; top: 50px; right: -225px; z-index: 9999; }
-        #img-container img { width: 50%; height: auto; }
-    </style>
 </head>
 <body>
+    <div class="slider-container">
+        <div class="slider-label">Observation Year</div>
+        <input type="range" min="2003" max="2024" value="2016" class="slider" id="mySlider">
+        <div class="slider-value" id="sliderValueText">2016</div>
+    </div>
     <div id="map"></div>
     <div id="img-container">
         <img src="colorMatrix.png" alt="Your Image">
     </div>
     <script src="map.js"></script>
+    <script>
+        var slider = document.getElementById("mySlider");
+        var sliderValueText = document.getElementById("sliderValueText");
+        var timeout;
+
+        slider.addEventListener("input", function() {
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                var sliderValue = parseInt(slider.value);
+                updateMapData(sliderValue);
+                // slider will update if the year is "selected" for more than 350 milliseconds. Gets rid of cycling through displaying all years
+                // if user "jumps" to a specific year on slider.
+            }, 350);
+            sliderValueText.textContent = slider.value;
+        });
+    </script>
 </body>
 </html>
