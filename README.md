@@ -12,6 +12,6 @@ Install express: "npm install express"
 
 Open directory in terminal \
 Type "node app.js" \
-Click link in output. \
+Open outputted link in browser \
 Example: Server is running at http://localhost:3000  
 
