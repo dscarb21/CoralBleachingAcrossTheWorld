@@ -1,3 +1,6 @@
+import { showObservation } from './observation-popup.js';
+import { showWelcome } from './welcome-popup.js';
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHNjYXJiMjEiLCJhIjoiY2x0cnR3cWlqMGtmZzJucDU2eDR2eWpyMCJ9.nfk8bnbhwkUmEHDhKZv3zA';
 
 var map;
@@ -17,6 +20,7 @@ async function initializeMap(cleanData) {
     map.on('load', () => {
         addLayers(map, cleanData);
         clickHoverListener(map);
+        showWelcome();
     });
 }
 
@@ -85,22 +89,25 @@ function rowToFeature(row) {
 function clickHoverListener(map) {
     // When a click event occurs on an unclustered point, show a popup
     map.on('click', 'coral-point', (e) => {
+        showObservation();
+
         const coordinates = e.features[0].geometry.coordinates.slice();
         const p = e.features[0].properties;
         const date = p.date.split("T")[0];
         var color = p.lightest;
-        if(p.lightest != p.darkest){
-          color += ' - ' + p.darkest;
+        if (p.lightest != p.darkest) {
+            color += ' - ' + p.darkest;
         }
         const depth = 'Depth: ' + p.depth + ' m';
         const cond = 'Light condition: ' + p.condition;
         const temp = 'Water temperature: ' + p.temp + 'ºC';
-        const group = 'Collected by ' + p.group
-        // You can customize the popup content based on your data
-        new mapboxgl.Popup({className: 'pop'})
-            .setLngLat(coordinates)
-            .setHTML('<h2>' + p.site + '</h2><p>' + date + '</p><h1>' + color + '</h1><p>' + p.type + '<br></br>'+'<p>CONDITIONS:</p><p className: cond>' + cond + '</p><p >' + temp + '</p><p>' + depth + '</p><br></br><p>' + group + '</p>')
-            .addTo(map);
+        const group = 'Collected by ' + p.group;
+
+        // Set color data in colorContent container
+        document.querySelector('.tab-data[data-tab="color"]').textContent += color;
+        document.querySelector('.tab-data[data-tab="location"]').textContent += p.site;
+        document.querySelector('.tab-data[data-tab="date"]').textContent += date;
+        document.querySelector('.tab-data[data-tab="coral"]').textContent += p.type;
     });
     
     // Change cursor style on hover

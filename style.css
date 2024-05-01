@@ -8,13 +8,14 @@ body {
     top: 0; 
     bottom: 0; 
     width: 100%; 
+    z-index: 1;
 }
 
 #img-container { 
     position: fixed; 
     top: 50px; 
     right: -225px; 
-    z-index: 9999; 
+    z-index: 2; 
 }
 
 #img-container img { 
@@ -27,7 +28,7 @@ body {
     bottom: 30px; 
     left: 50%; 
     transform: translateX(-50%); 
-    z-index: 9999; 
+    z-index: 100; 
 }
 
 .slider-label {
@@ -58,6 +59,90 @@ body {
                  1px 1px 0 black;
 }
 
+.popup-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3; /* Ensure popup appears above the map */
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #888;
+    z-index: 4; 
+}
+
+.close-btn:hover {
+    color: #333;
+}
+
+.observation-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.observation-content {
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+}
+
+.tabs-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.tab.active {
+    font-weight: bold;
+}
+
+.tab-content {
+    display: none;
+    margin-top: 20px;
+}
+
+.tab-data {
+    font-weight: bold;
+    display: none;
+    margin-top: 20px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
 input[type="range"] {
     -webkit-appearance: none;
      appearance: none;
@@ -65,6 +150,17 @@ input[type="range"] {
      cursor: pointer;
      width: 15rem;
  }
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #888;
+}
+.close-btn:hover {
+    color: #333;
+}
  
  /* Removes default focus */
  input[type="range"]:focus {
