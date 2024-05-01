@@ -51,7 +51,7 @@ function addLayers() {
     );
 }
 
-function updateMapData(value) {
+export function updateMapData(value) {
     console.log("Year: " + value);
     if (value != 2025) {
         map.setFilter('coral-point', ["==", ['to-number', ['get','year']], value]);
