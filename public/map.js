@@ -1,6 +1,5 @@
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHNjYXJiMjEiLCJhIjoiY2x0cnR3cWlqMGtmZzJucDU2eDR2eWpyMCJ9.nfk8bnbhwkUmEHDhKZv3zA';
 
-var year = 2016;
 var map;
 var cleanData;
 
@@ -8,7 +7,7 @@ var cleanData;
 async function initializeMap(cleanData) {
     map = new mapboxgl.Map({
         container: 'map',
-        style: 'mapbox://styles/nathan-svenska/clvk16y3e01e901queacmfk9y',
+        style: 'mapbox://styles/dscarb21/clvnttkga01ir01qrclu4a7z8',
         scrollZoom: true,
         zoom: 1.7,
         minZoom: 1.7,
@@ -50,8 +49,11 @@ function addLayers() {
 
 function updateMapData(value) {
     console.log("Year: " + value);
-    map.setFilter('coral-point', ["==", ['to-number', ['get','year']], value]);
-    year = value;
+    if (value != 2025) {
+        map.setFilter('coral-point', ["==", ['to-number', ['get','year']], value]);
+    } else {
+        map.setFilter("coral-point", true)
+    }
 }
 
 // CSV row to GeoJSON

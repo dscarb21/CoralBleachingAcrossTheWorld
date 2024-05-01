@@ -11,8 +11,8 @@
 <body>
     <div class="slider-container">
         <div class="slider-label">Observation Year</div>
-        <input type="range" min="2003" max="2024" value="2016" class="slider" id="mySlider">
-        <div class="slider-value" id="sliderValueText">2016</div>
+        <input type="range" min="2003" max="2025" value="2025" class="slider" id="mySlider">
+        <div class="slider-value" id="sliderValueText">All</div>
     </div>
     <div id="map"></div>
     <div id="img-container">
@@ -32,7 +32,7 @@
                 // slider will update if the year is "selected" for more than 350 milliseconds. Gets rid of cycling through displaying all years
                 // if user "jumps" to a specific year on slider.
             }, 350);
-            sliderValueText.textContent = slider.value;
+            sliderValueText.textContent = (slider.value === "2025" ? "All" : slider.value);
         });
     </script>
 </body>

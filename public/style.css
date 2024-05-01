@@ -22,14 +22,9 @@ body {
     height: auto; 
 }
 
-.slider { 
-    width: 200px; 
-    z-index: 9999;
-}
-
 .slider-container { 
     position: fixed; 
-    bottom: 20px; 
+    bottom: 30px; 
     left: 50%; 
     transform: translateX(-50%); 
     z-index: 9999; 
@@ -42,8 +37,12 @@ body {
     transform: translateX(-50%);
     width: 500px;
     text-align: center;
-    color: green;
+    color: white;
     font-weight: bold;
+    text-shadow: -1px -1px 0 black,  
+                 1px -1px 0 black,
+                 -1px 1px 0 black,
+                 1px 1px 0 black;
 }
 
 .slider-value {
@@ -51,8 +50,75 @@ body {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    color: green;
+    color: white;
     font-weight: bold;
+    text-shadow: -1px -1px 0 black,  
+                 1px -1px 0 black,
+                 -1px 1px 0 black,
+                 1px 1px 0 black;
 }
 
+input[type="range"] {
+    -webkit-appearance: none;
+     appearance: none;
+     background: transparent;
+     cursor: pointer;
+     width: 15rem;
+ }
+ 
+ /* Removes default focus */
+ input[type="range"]:focus {
+   outline: none;
+ }
+ 
+ /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+ /* slider track */
+ input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #ffffff;
+    border-radius: 3px;
+    height: 0.5rem;
+    border: 1px solid #000000; /* Add border color */
+}
+ 
+ /* slider thumb */
+ input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -8px; /* Centers thumb on the track */
+ 
+    /*custom styles*/
+    background-color: green;
+    height: 1.5rem;
+    width: 1rem;
+ }
+ 
+ input[type="range"]:focus::-webkit-slider-thumb {   
+   border: 1px solid #000000;
+   outline: 1px solid #000000;
+ }
+ 
+ /******** Firefox styles ********/
+ /* slider track */
+ input[type="range"]::-moz-range-track {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    height: 0.5rem;
+    border: 1px solid #000000; /* Add border color */
+ }
+ 
+ /* slider thumb */
+ input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0; /*Removes default border-radius that FF applies*/
+ 
+    /*custom styles*/
+    background-color: green;
+    height: 1.5rem;
+    width: 1rem;
+ }
+ 
+ input[type="range"]:focus::-moz-range-thumb {
+    border: 1px solid #000000;
+    outline: 1px solid #000000;
+ }
 
