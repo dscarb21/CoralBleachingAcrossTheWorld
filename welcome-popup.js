@@ -20,7 +20,7 @@ export function showWelcome() {
     paragraph1.textContent = 'Welcome to our coral bleaching map that uses data from Coral Watch to show coral bleaching sites around the world!';
     
     var paragraph2 = document.createElement('p');
-    paragraph2.textContent = 'Click on an observation to read about the coral being recorded at each specific site!';
+    paragraph2.textContent = 'Click on an observation to read about the coral being recorded at each specific site.';
     
     var sourceLink1 = document.createElement('a');
     sourceLink1.href = 'https://coralwatch.org/';

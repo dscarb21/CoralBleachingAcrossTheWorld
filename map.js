@@ -1,6 +1,7 @@
 import { showObservation } from './observation-popup.js';
 import { showWelcome } from './welcome-popup.js';
 
+
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHNjYXJiMjEiLCJhIjoiY2x0cnR3cWlqMGtmZzJucDU2eDR2eWpyMCJ9.nfk8bnbhwkUmEHDhKZv3zA';
 
 var map;
@@ -40,11 +41,12 @@ function addLayers() {
             type: "circle",
             source: "observations",
             paint: {
-                "circle-color": "green",
+                "circle-color": ['get', 'color'],
                 "circle-stroke-color": "white",
                 "circle-blur": ["interpolate", ["linear"], ["zoom"], 1, 1, 3, 0],
                 "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 4, 0, 7, 1],
-                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 9, 15, 3],
+                "circle-opacity": ["interpolate", ["linear"], ["zoom"], 1.5, 0.2, 3, 1],
+                "circle-radius": ["interpolate", ["linear"], ["zoom"], 1.5, 13, 15, 3],
             }
         },
         "waterway-label"
@@ -69,7 +71,7 @@ function rowToFeature(row) {
             coordinates: [parseFloat(row.Longitude), parseFloat(row.Latitude)]
         },
         properties: {
-            color: row["Average color"],
+            color: row["Calculated average color"],
             type: row["Coral type"],
             lightest: row["Lightest color code"],
             darkest: row["Darkest color code"],
@@ -98,10 +100,6 @@ function clickHoverListener(map) {
         if (p.lightest != p.darkest) {
             color += ' - ' + p.darkest;
         }
-        const depth = 'Depth: ' + p.depth + ' m';
-        const cond = 'Light condition: ' + p.condition;
-        const temp = 'Water temperature: ' + p.temp + 'ºC';
-        const group = 'Collected by ' + p.group;
 
         // Set color data in colorContent container
         document.querySelector('.tab-data[data-tab="color"]').textContent += color;
