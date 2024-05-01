@@ -8,10 +8,9 @@ You now have access to all the code. Most of the logic is located in public/map.
 
 ### To start server:
 Install Node JS: https://nodejs.org/en/download \
-Install express: "npm install express"
+Install express: Go back to the terminal, type `npm install express`
 
-Open directory in terminal \
-Type "node app.js" \
+Type `node app.js` \
 Open outputted link in browser \
 Example: Server is running at http://localhost:3000  
 
