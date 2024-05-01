@@ -53,21 +53,20 @@ function addLayers() {
     );
 }
 
-export function updateMapData(value) {
-    console.log("Year: " + value);
-    if (value != 2025) {
-        map.setFilter('coral-point', ["==", ['to-number', ['get','year']], value]);
+export function updateMapData(yr, type) {
+    console.log("Year: " + yr);
+    console.log("Type: " + type);
+    if (yr == 2025 && type == "*") {
+        map.setFilter("coral-point", true) 
+    } else if (yr != 2025 && type == "*") {
+        map.setFilter('coral-point', ["==", ['to-number', ['get','year']], yr]);
+    } else if (yr == 2025 && type != "*") {
+        map.setFilter('coral-point', ["==", ['get','type'], type]);
     } else {
-        map.setFilter("coral-point", true)
-    }
-}
-
-export function filterCoral(value) {
-    console.log("Coral type: " + value);
-    if (value == "*") {
-        map.setFilter("coral-point", true)
-    } else {
-        map.setFilter('coral-point', ["==", ['get','type'], value]);
+        map.setFilter('coral-point', ["all",
+        ["==", ['to-number', ['get','year']], yr],
+        ["==", ['get','type'], type]
+     ])
     }
 }
 
