@@ -34,11 +34,32 @@
             </label>
         </div>
     </div>
+    <div class="obs-popup" id="obs-popup">
+      <div class="obs-popup-content">
+        <div class="obs-popup-header">
+          <span class="close" id="obs-close">&times;</span>
+        </div>
+        <div class="popup-tabs">
+          <button class="tablinks" id="colorTab">Color</button>
+          <button class="tablinks" id="locationTab">Location</button>
+          <button class="tablinks" id="dateTab">Date</button>
+          <button class="tablinks" id="typeTab">Coral Type</button>
+          <button class="tablinks" id="conditionsTab">Conditions</button>
+        </div>
+        <div id="data" class="tabcontent">
+          Data
+        </div>
+        <div id="content" class="tabcontent">
+          Content
+        </div>
+      </div>
+    </div>
     <div id="map"></div>
     <div id="img-container">
         <img src="colorMatrix.png" alt="Your Image">
     </div>
     <script type="module" src="slider.js"></script>   
     <script type="module" src="map.js"></script>
+    <script type="module" src="observation.js"></script>
 </body>
 </html>

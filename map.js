@@ -1,5 +1,6 @@
 import { showObservation } from './observation-popup.js';
 import { showWelcome } from './welcome-popup.js';
+import { openPopup } from './observation.js';
 
 
 mapboxgl.accessToken = 'pk.eyJ1IjoiZHNjYXJiMjEiLCJhIjoiY2x0cnR3cWlqMGtmZzJucDU2eDR2eWpyMCJ9.nfk8bnbhwkUmEHDhKZv3zA';
@@ -99,7 +100,8 @@ function rowToFeature(row) {
 function clickHoverListener(map) {
     // When a click event occurs on an unclustered point, show a popup
     map.on('click', 'coral-point', (e) => {
-        showObservation();
+        //showObservation();
+        openPopup();
 
         const coordinates = e.features[0].geometry.coordinates.slice();
         const p = e.features[0].properties;
@@ -109,11 +111,18 @@ function clickHoverListener(map) {
             color += ' - ' + p.darkest;
         }
 
-        // Set color data in colorContent container
-        document.querySelector('.tab-data[data-tab="color"]').textContent += color;
-        document.querySelector('.tab-data[data-tab="location"]').textContent += p.site;
-        document.querySelector('.tab-data[data-tab="date"]').textContent += date;
-        document.querySelector('.tab-data[data-tab="coral"]').textContent += p.type;
+        const eventData = {
+            color: color,
+            site: p.site,
+            date: date,
+            type: p.type,
+            condition: p.condition,
+            temp: p.temp,
+            depth: p.depth
+        };
+
+        const event = new CustomEvent('coralPointClicked', { detail: eventData });
+        window.dispatchEvent(event);
     });
     
     // Change cursor style on hover

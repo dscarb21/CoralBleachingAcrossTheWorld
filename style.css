@@ -62,19 +62,84 @@ label {
 }
 
 .popup-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3; /* Ensure popup appears above the map */
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 400px;
+    height: 300px;
+    z-index: 3;
     background-color: white;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     padding: 3%;
 }
 
+
 .popup-content {
     text-align: center;
 }
+
+.obs-popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    width: 500px;
+    transform: translate(-50%, -50%);
+    border: 1px solid #ccc;
+    background-color: #fff;
+    z-index: 9999;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+.obs-popup-content {
+    max-width: 500px;
+}
+
+.obs-popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.obs-popup-header span {
+    font-weight: bold;
+}
+
+.popup-tabs {
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+}
+
+.tabcontent {
+    display: none; 
+    padding: 5px; 
+}
+
+.tablinks {
+    background-color: #f0f0f0;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin: 5px 5px;
+}
+
+.tablinks:hover {
+    background-color: #ccc;
+}
+
+#data {
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+}
+
+.close {
+    cursor: pointer;
+}
+  
 
 .close-btn {
     position: absolute;
@@ -87,57 +152,6 @@ label {
 
 .close-btn:hover {
     color: #333;
-}
-
-.observation-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 3;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    padding: 20px;
-}
-
-.observation-content {
-    position: relative;
-    font-family: 'Open Sans';
-    font-size: 0.9rem;
-}
-
-h2 {
-    text-align: center;
-}
-
-.tabs-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.tab {
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-.tab.active {
-    font-weight: bold;
-}
-
-.tab-content {
-    display: none;
-    margin-top: 20px;
-}
-
-.tab-data {
-    font-weight: bold;
-    display: none;
-    margin-top: 20px;
-}
-
-.tab-content.active {
-    display: block;
 }
 
 input[type="range"] {
