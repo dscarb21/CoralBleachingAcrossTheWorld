@@ -24,7 +24,7 @@ export function showWelcome() {
     
     var sourceLink1 = document.createElement('a');
     sourceLink1.href = 'https://coralwatch.org/';
-    sourceLink1.textContent = 'Data: Coral Watch';
+    sourceLink1.textContent = 'Data Source';
     sourceLink1.target = '_blank'; // Open link in a new tab
     
     var sourceLink2 = document.createElement('a');
@@ -42,9 +42,8 @@ export function showWelcome() {
     popupContent.appendChild(popupTitle);
     popupContent.appendChild(paragraph1);
     popupContent.appendChild(paragraph2);
+    popupContent.appendChild(document.createElement('br'));
     popupContent.appendChild(sourceLink1);
-    popupContent.appendChild(document.createElement('br'));
-    popupContent.appendChild(document.createElement('br'));
     popupContent.appendChild(sourceLink2);
     popupContent.appendChild(document.createElement('br'));
     popupContent.appendChild(document.createElement('br'));
