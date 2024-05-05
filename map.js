@@ -80,6 +80,7 @@ function rowToFeature(row) {
         },
         properties: {
             color: row["Calculated average color"],
+            colorRange: row["Color Range By Letter"],
             type: row["Coral type"],
             lightest: row["Lightest color code"],
             darkest: row["Darkest color code"],
@@ -105,10 +106,8 @@ function clickHoverListener(map) {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const p = e.features[0].properties;
         const date = p.date.split("T")[0];
-        var color = p.lightest;
-        if (p.lightest != p.darkest) {
-            color += ' - ' + p.darkest;
-        }
+        var color = p.colorRange.replace(/[\[\]']+/g, '').replace(/-/g, ' - ');
+
 
         const eventData = {
             color: color,
