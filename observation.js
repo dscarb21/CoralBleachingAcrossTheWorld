@@ -44,9 +44,14 @@ export function openTab(tabName) {
 
     var contentDiv = document.getElementById("content");
     var dataDiv = document.getElementById("data");
+    var coralImageDiv = document.getElementById("coralImage");
+
+    // Hide image div
+    coralImageDiv.style.display = "none";
+
     switch (tabName) {
         case "color":
-            contentDiv.textContent = "In the top right corner you will see a color key that denotes what letter and number combination corresponds to which color of the coral. Different species of coral have different colors, not unlike the colors we see in flowers or fruits. For each coral observed, the person recording looked at the darkest and lightest part of the coral to come up with that specific coral’s color range. If an observation reported a coral range of C2-C6 this means the lightest part of that coral was closest to the light pink coloring of C2, and the darkest part of that coral was closest to the C6 coloring, which is a dark red. The lighter the color, the more bleached the coral.";
+            contentDiv.textContent = "Use the color key in the top right to determine the range of colors observed. Different species of coral have different colors, not unlike the colors we see in flowers or fruits. Each row on the key represents a different color. For each coral, the observer noted the darkest and lightest part to come up with that specific coral’s color range. The lighter the color, the more bleached the coral. Note that some observations spread across multiple corals of differing color, leading to multiple color ranges. ";
             dataDiv.textContent = color;
             break;
         case "location":
@@ -58,23 +63,29 @@ export function openTab(tabName) {
             dataDiv.textContent = date;
             break;
         case "type":
-            contentDiv.innerHTML = `
-            <ul>
-                <li>
-                    Branching corals: These corals are a type of hard corals that are characterized by their secondary branches stemming from a base or trunk (similar to a tree). Branching corals are most commonly found in the Indo-Pacific, and the tips of these corals can be used to differentiate between genera. <em>Source: University of San Diego – Coral Net</em>
-                </li>
-                <li>
-                    Plate corals: These corals are a type of hard corals that are characterized by their broad, flat shape. Plate corals are found around the world and have adapted to living in deeper water by spreading out their skeleton to reach more sunlight. The best way to differentiate between plating coral genera is to look at their polyps. <em>Source: Reef Builders</em>
-                </li>
-                <li>
-                    Boulder corals: These corals are a type of hard corals that are also known as massive corals. They are characterized by their broad, round shape. They are dense and solid and found around the world. Patterns, shape, and polyps are useful when differentiating between boulder coral genera. <em>Source: Smithsonian Institute</em>
-                </li>
-                <li>
-                    Soft corals: Soft corals, unlike hard corals, do not have a stony skeleton. They are not reef-building corals, but are present in reefs around the world. They are often characterized as resembling grass, fans, or whips. <em>Source: NOAA</em>
-                </li>
-            </ul>
-        `;
+            // Show image div
+            coralImageDiv.style.display = "block";
             dataDiv.textContent = type;
+            switch (type) {
+                case "Branching corals":
+                    coralImageDiv.innerHTML = '<img src="coral_icons/branch.png" alt="Branching Coral">';
+                    contentDiv.textContent = 'These corals are a type of hard corals that are characterized by their secondary branches stemming from a base or trunk (similar to a tree). Branching corals are most commonly found in the Indo-Pacific, and the tips of these corals can be used to differentiate between genera. Source: University of San Diego – Coral Net';
+                    break;
+                case "Plate corals":
+                    coralImageDiv.innerHTML = '<img src="coral_icons/plate.png" alt="Plate Coral">';
+                    contentDiv.textContent = 'These corals are a type of hard corals that are characterized by their broad, flat shape. Plate corals are found around the world and have adapted to living in deeper water by spreading out their skeleton to reach more sunlight. The best way to differentiate between plating coral genera is to look at their polyps. Source: Reef Builders';
+                    break;
+                case "Boulder corals":
+                    coralImageDiv.innerHTML = '<img src="coral_icons/boulder.png" alt="Boulder Coral">';
+                    contentDiv.textContent = 'These corals are a type of hard corals that are also known as massive corals. They are characterized by their broad, round shape. They are dense and solid and found around the world. Patterns, shape, and polyps are useful when differentiating between boulder coral genera. Source: Smithsonian Institute';
+                    break;
+                case "Soft corals":
+                    coralImageDiv.innerHTML = '<img src="coral_icons/soft.png" alt="Soft Coral">';
+                    contentDiv.textContent = 'Soft corals, unlike hard corals, do not have a stony skeleton. They are not reef-building corals, but are present in reefs around the world. They are often characterized as resembling grass, fans, or whips. Source: NOAA';
+                    break;
+                default:
+                    break;
+            }
             break;
         case "conditions":
             contentDiv.innerHTML = `
