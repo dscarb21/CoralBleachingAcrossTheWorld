@@ -16,14 +16,17 @@ body {
 
 #img-container { 
     position: fixed; 
-    top: 50px; 
-    right: -225px; 
+    right: -92%;
+    margin-top: 5%;
+    width: 1800px; 
     z-index: 2; 
 }
 
 #img-container img { 
-    width: 50%; 
+    width: 20%; 
     height: auto; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+
 }
 
 .filter-box { 
