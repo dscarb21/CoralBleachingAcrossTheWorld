@@ -95,7 +95,7 @@ export function openTab(tabName) {
                 <li>Depth: Different ways of observing corals limit how deep one can observe. For example, a snorkeler may be limited to only a couple meters, whereas a scuba diver can reach depths of 20 meters.</li>
             </ul>
             `;
-            dataDiv.innerHTML = "Weather: " + condition + "<br>Temperature: " + temp + "°C<br>Depth: " + depth + "m";
+            dataDiv.innerHTML = "Light Conditions: " + condition + "<br>Water Temperature: " + temp + "°C<br>Depth: " + depth + "m";
             break;
         default:
             contentDiv.textContent = "N/A";
