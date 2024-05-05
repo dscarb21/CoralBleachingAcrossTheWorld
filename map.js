@@ -1,4 +1,3 @@
-import { showObservation } from './observation-popup.js';
 import { showWelcome } from './welcome-popup.js';
 import { openPopup } from './observation.js';
 
